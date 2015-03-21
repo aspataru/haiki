@@ -12,6 +12,7 @@ public class HelloController {
 		
 		model.addAttribute("greeting", "Hello, World!");
 		
+		// go to hello.jsp page
 		return "hello";
 	}
 
