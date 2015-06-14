@@ -1,9 +1,12 @@
 package com.haiki.model;
 
+import javax.validation.constraints.NotNull;
+
 import org.hibernate.validator.constraints.Length;
 
 public class NewsPiece {
 	
+	@NotNull
 	private String activity;
 	
 	public String getActivity() {
