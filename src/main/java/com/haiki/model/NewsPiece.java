@@ -1,10 +1,19 @@
 package com.haiki.model;
 
 import org.hibernate.validator.constraints.Length;
-import org.hibernate.validator.constraints.Range;
 
 public class NewsPiece {
 	
+	private String activity;
+	
+	public String getActivity() {
+		return activity;
+	}
+
+	public void setActivity(String activity) {
+		this.activity = activity;
+	}
+
 	@Length(min = 5)
 	private String newsPieceTitle;
 
