@@ -8,18 +8,36 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Add communication</title>
+
+<style>
+.error {
+	color: #ff0000
+}
+
+.errorBlock {
+	color: #000;
+	background-color: #ffEEEE;
+	border: 3px solid #ff0000;
+	padding: 8px;
+	margin: 16px;
+}
+</style>
+
 </head>
 <body>
 
 	<!-- commandName = backing object -->
 	<form:form commandName="communication">
+		<!-- path asterisk = any error -->
+		<form:errors path="*" cssClass="errorBlock" element="div"/>
 		<table>
 			<tr>
 				<td>Enter communication title</td>
-				<td><form:input path="title" /></td>
+				<td><form:input path="title" cssErrorClass="error"/></td>
+				<td><form:errors path="title" cssClass="error"/></td>
 			</tr>
 			<tr>
-				<td colspan="2"><input type="submit"
+				<td colspan="3"><input type="submit"
 					value="Enter communication title"></td>
 			</tr>
 		</table>
