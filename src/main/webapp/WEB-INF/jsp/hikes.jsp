@@ -4,10 +4,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Haiki!</title>
+<title>Haiki hikes</title>
 </head>
 <body>
-	<h1>Welcome to wonderful Haiki!</h1>
-<a href="hikes.html">Hikes</a>
+	<h1>Haiki hikes</h1>
+	<p>${hikeList.hikes[0].name}</p>
+	<p>${hikeList.hikes[0].description}</p>
 </body>
 </html>
