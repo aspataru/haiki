@@ -22,9 +22,11 @@ public class MongoServiceImpl implements MongoService {
 
 	public MongoServiceImpl() {
 		MongoClient mongoClient = null;
+		String mongoUri = System.getenv()
+				 .get("MONGOLAB_URI");
+		System.out.println("Connecting to Mongo instance at: " + mongoUri);
 		try {
-			 mongoClient = new MongoClient(new MongoClientURI(System.getenv()
-			 .get("MONGOLABS_URI")));
+			 mongoClient = new MongoClient(new MongoClientURI(mongoUri));
 		} catch (UnknownHostException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
