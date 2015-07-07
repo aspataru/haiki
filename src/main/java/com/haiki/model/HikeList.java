@@ -6,6 +6,10 @@ import java.util.List;
 public class HikeList {
 
 	private final List<Hike> hikes;
+	
+	public HikeList() {
+		hikes = new ArrayList<Hike>();
+	}
 
 	public HikeList(Hike first) {
 		hikes = new ArrayList<Hike>();

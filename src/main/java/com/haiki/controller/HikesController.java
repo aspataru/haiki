@@ -13,6 +13,7 @@ import org.springframework.web.context.request.SessionScope;
 import com.haiki.model.Hike;
 import com.haiki.model.HikeList;
 import com.haiki.service.HikeService;
+import com.haiki.service.MongoServiceImpl;
 
 
 @Controller
