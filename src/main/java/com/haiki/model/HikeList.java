@@ -16,4 +16,8 @@ public class HikeList {
 		return hikes;
 	}
 
+	public void addHike(Hike hike) {
+		hikes.add(hike);
+	}
+
 }
