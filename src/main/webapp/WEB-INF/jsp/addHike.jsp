@@ -14,8 +14,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Haiki hikes</title>
 </head>
-<link rel='stylesheet' href='/webjars/bootstrap/3.1.0/css/bootstrap.min.css'>
-<link rel='stylesheet' href='/webjars/bootstrap/3.1.0/js/bootstrap.min.js'>
 
 <body>
 	<!-- commandName = backing object -->
@@ -32,10 +30,6 @@
 
 	</form:form>
 	<h1>Haiki hikes</h1>
-	<%-- 	<p>${hikeList.hikes[0].name}</p> --%>
-	<%-- 	<p>${hikeList.hikes[0].description}</p> --%>
-	<%-- 	<p>${hikeList.hikes[1].name}</p> --%>
-	<%-- 	<p>${hikeList.hikes[1].description}</p> --%>
 	<table>
 	<c:forEach items="${hikeList.hikes}" var="element">
 		<tr>

@@ -1,4 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<c:set var="context" value="${pageContext.request.contextPath}" />
 
 <!DOCTYPE html>
 <html lang="en">
@@ -16,7 +17,7 @@
 
 <!-- Bootstrap core CSS -->
 <link rel='stylesheet'
-	href="/haiki-mvc/webjars/bootstrap/3.1.0/css/bootstrap.min.css">
+	href="${context}/webjars/bootstrap/3.1.0/css/bootstrap.min.css">
 
 <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
 <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
@@ -249,7 +250,7 @@
 	<!-- Placed at the end of the document so the pages load faster -->
 	<script type="text/javascript" src="jquery-1.8.3.js"></script>
 
-	<script src="/haiki-mvc/webjars/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+	<script src="${context}/webjars/bootstrap/3.1.0/js/bootstrap.min.js"></script>
 	<!-- Just to make our placeholder images work. Don't actually copy the next line! -->
 	<!-- 	<script src="../../assets/js/vendor/holder.min.js"></script> -->
 	<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
