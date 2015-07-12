@@ -133,8 +133,6 @@
 
 	<!-- START THE FEATURETTES -->
 
-	<hr class="featurette-divider">
-
 	<div class="container">
 
 		<div class="blog-header">
@@ -229,6 +227,8 @@
 	<!-- 		<hr class="featurette-divider"> -->
 
 	<!-- /END THE FEATURETTES -->
+	
+	<hr class="featurette-divider">
 
 	<!-- FOOTER -->
 	<footer>
@@ -236,7 +236,7 @@
 			<a href="#">Back to top</a>
 		</p>
 		<p>
-			&copy; 2014 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a
+			&copy; 2015 Bubi, Inc. &middot; <a href="#">Privacy</a> &middot; <a
 				href="#">Terms</a>
 		</p>
 	</footer>

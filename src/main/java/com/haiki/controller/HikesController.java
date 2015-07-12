@@ -30,7 +30,9 @@ public class HikesController {
 	
 	@RequestMapping(value = "/hikes/new", method = RequestMethod.GET)
 	public String newHike(Model model)  {
-		model.addAttribute("hike", new Hike("Default hike title", "Default hike description"));
+		model.addAttribute("hike", new Hike("enter a title", "and a description"));
+		HikeList hikes = hikeService.getHikes();
+		model.addAttribute("hikeList", hikes);
 		return "addHike";
 	}
 	
@@ -38,8 +40,7 @@ public class HikesController {
 	public String newHike(@ModelAttribute("hike") Hike hike, BindingResult result) {
 		System.out.println("Hike added" + hike.getName());	
 		hikeService.addHike(hike);
-		return "redirect:addHike.html";
+		return "redirect:new.html";
 	}
 	
-
 }
