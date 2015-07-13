@@ -6,7 +6,6 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.haiki.controller.MongoService;
 import com.haiki.model.Hike;
 import com.mongodb.BasicDBObject;
 import com.mongodb.DB;
@@ -16,6 +15,7 @@ import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
 
 @Service("mongoService")
+// TODO: integration test for mongo operations
 public class MongoServiceImpl implements MongoService {
 
 	DBCollection coll;
@@ -24,11 +24,9 @@ public class MongoServiceImpl implements MongoService {
 		MongoClient mongoClient = null;
 		String mongoUri = System.getenv()
 				 .get("MONGOLAB_URI");
-		System.out.println("Connecting to Mongo instance at: " + mongoUri);
 		try {
 			 mongoClient = new MongoClient(new MongoClientURI(mongoUri));
 		} catch (UnknownHostException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -40,8 +38,6 @@ public class MongoServiceImpl implements MongoService {
 		BasicDBObject doc = new BasicDBObject("name", hike.getName()).append(
 				"description", hike.getDescription());
 		coll.insert(doc);
-		DBObject myDoc = coll.findOne();
-		System.out.println(myDoc);
 	}
 
 	public List<Hike> getAllHikes() {

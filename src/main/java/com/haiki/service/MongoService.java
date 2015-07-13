@@ -1,4 +1,4 @@
-package com.haiki.controller;
+package com.haiki.service;
 
 import java.util.List;
 

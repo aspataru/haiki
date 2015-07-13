@@ -1,4 +1,4 @@
-package com.haiki.service;
+package com.haiki.legacy;
 
 import java.util.List;
 

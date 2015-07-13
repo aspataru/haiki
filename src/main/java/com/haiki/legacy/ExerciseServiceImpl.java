@@ -1,13 +1,11 @@
-package com.haiki.service;
+package com.haiki.legacy;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.stereotype.Service;
-
 import com.haiki.model.Activity;
 
-@Service("exerciseService")
+//@Service("exerciseService")
 public class ExerciseServiceImpl implements ExerciseService {
 
 	public List<Activity> findAllActivities() {
