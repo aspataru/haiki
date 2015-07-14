@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import com.haiki.model.Hike;
 import com.haiki.model.HikeList;
 import com.haiki.service.HikeService;
+import com.haiki.util.Constants;
 
 
 @Controller
@@ -30,7 +31,7 @@ public class HikesController {
 	
 	@RequestMapping(value = "/hikes/new", method = RequestMethod.GET)
 	public String newHike(Model model)  {
-		model.addAttribute("hike", new Hike("enter a title", "and a description"));
+		model.addAttribute("hike", new Hike(Constants.DEFAULT_HIKE_TITLE, Constants.DEFAULT_HIKE_DESCRIPTION));
 		HikeList hikes = hikeService.getHikes();
 		model.addAttribute("hikeList", hikes);
 		return "addHike";
@@ -38,7 +39,6 @@ public class HikesController {
 	
 	@RequestMapping(value = "/hikes/new", method = RequestMethod.POST)
 	public String newHike(@ModelAttribute("hike") Hike hike, BindingResult result) {
-		System.out.println("Hike added" + hike.getName());	
 		hikeService.addHike(hike);
 		return "redirect:new.html";
 	}
