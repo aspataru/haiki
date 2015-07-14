@@ -14,33 +14,41 @@ import com.haiki.model.HikeList;
 import com.haiki.service.HikeService;
 import com.haiki.util.Constants;
 
-
 @Controller
-@SessionAttributes({"hikeList","hike"})
+@SessionAttributes({ "hikeList", "hike" })
 public class HikesController {
-	
+
 	@Autowired
 	private HikeService hikeService;
-	
+
 	@RequestMapping(value = "/hikes", method = RequestMethod.GET)
-	public String hikes(Model model)  {
+	public String hikes(Model model) {
 		HikeList hikes = hikeService.getHikes();
 		model.addAttribute("hikeList", hikes);
 		return "hikes";
 	}
-	
-	@RequestMapping(value = "/hikes/new", method = RequestMethod.GET)
-	public String newHike(Model model)  {
-		model.addAttribute("hike", new Hike(Constants.DEFAULT_HIKE_TITLE, Constants.DEFAULT_HIKE_DESCRIPTION));
+
+	@RequestMapping(value = "/hikes/admin", method = RequestMethod.GET)
+	public String newHike(Model model) {
+		model.addAttribute("hike", new Hike(Constants.DEFAULT_HIKE_TITLE,
+				Constants.DEFAULT_HIKE_DESCRIPTION));
 		HikeList hikes = hikeService.getHikes();
 		model.addAttribute("hikeList", hikes);
-		return "addHike";
+		return "hikeAdmin";
 	}
-	
-	@RequestMapping(value = "/hikes/new", method = RequestMethod.POST)
-	public String newHike(@ModelAttribute("hike") Hike hike, BindingResult result) {
+
+	@RequestMapping(value = "/hikes/admin", method = RequestMethod.POST)
+	public String newHike(@ModelAttribute("hike") Hike hike,
+			BindingResult result) {
 		hikeService.addHike(hike);
-		return "redirect:new.html";
+		return "redirect:admin.html";
 	}
-	
+
+	@RequestMapping(value = "/hikes/admin", method = RequestMethod.DELETE)
+	public String removeHike(@ModelAttribute("hike") Hike hike,
+			BindingResult result) {
+		hikeService.removeHike(hike);
+		return "redirect:admin.html";
+	}
+
 }

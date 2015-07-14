@@ -4,8 +4,11 @@ import com.haiki.model.Hike;
 import com.haiki.model.HikeList;
 
 public interface HikeService {
-	
+
 	public HikeList getHikes();
+
 	public void addHike(Hike hike);
+
+	public boolean removeHike(Hike hike);
 
 }

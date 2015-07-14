@@ -13,19 +13,18 @@ import com.mongodb.DBCollection;
 import com.mongodb.DBObject;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
+import com.mongodb.MongoException;
 
 @Service("mongoService")
-// TODO: integration test for mongo operations
 public class MongoServiceImpl implements MongoService {
 
 	DBCollection coll;
 
 	public MongoServiceImpl() {
 		MongoClient mongoClient = null;
-		String mongoUri = System.getenv()
-				 .get("MONGOLAB_URI");
+		String mongoUri = System.getenv().get("MONGOLAB_URI");
 		try {
-			 mongoClient = new MongoClient(new MongoClientURI(mongoUri));
+			mongoClient = new MongoClient(new MongoClientURI(mongoUri));
 		} catch (UnknownHostException e) {
 			e.printStackTrace();
 		}
@@ -35,21 +34,39 @@ public class MongoServiceImpl implements MongoService {
 	}
 
 	public void save(Hike hike) {
-		BasicDBObject doc = new BasicDBObject("name", hike.getName()).append(
-				"description", hike.getDescription());
+		DBObject doc = createDBObjectFromHike(hike);
 		coll.insert(doc);
 	}
 
 	public List<Hike> getAllHikes() {
 		List<Hike> allHikes = new ArrayList<Hike>();
 		for (DBObject currentDoc : coll.find()) {
-			if (currentDoc.get("name") != null
+			if (currentDoc.get("title") != null
 					&& currentDoc.get("description") != null) {
-				allHikes.add(new Hike(currentDoc.get("name").toString(),
+				allHikes.add(new Hike(currentDoc.get("title").toString(),
 						currentDoc.get("description").toString()));
 			}
 		}
 		return allHikes;
+	}
+
+	public boolean remove(Hike hike) {
+		return removeByTitle(hike.getTitle());
+	}
+
+	private boolean removeByTitle(String title) {
+		DBObject query = new BasicDBObject("title", title);
+		try {
+			coll.findAndRemove(query);
+		} catch (MongoException e) {
+			return false;
+		}
+		return true;
+	}
+	
+	private static DBObject createDBObjectFromHike(Hike hike) {
+		return new BasicDBObject("title", hike.getTitle()).append(
+				"description", hike.getDescription());
 	}
 
 }

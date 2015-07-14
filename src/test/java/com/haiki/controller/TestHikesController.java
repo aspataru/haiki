@@ -20,8 +20,8 @@ import com.haiki.util.Constants;
 public class TestHikesController {
 
 	private static final String HIKES_PAGE = "hikes";
-	private static final String NEW_HIKE_PAGE = "addHike";
-	private static final String NEW_HIKE_REDIRECT_PAGE = "redirect:new.html";
+	private static final String ADMIN_HIKE_PAGE = "hikeAdmin";
+	private static final String ADMIN_HIKE_REDIRECT = "redirect:admin.html";
 
 	@Mock
 	private HikeService hikeService;
@@ -49,7 +49,7 @@ public class TestHikesController {
 	}
 
 	@Test
-	public void shouldCallHikeServiceAndReturnAddHikesPageWhenGettingNewHike() {
+	public void shouldCallHikeServiceAndReturnAdminHikesPageWhenGettingNewHike() {
 		String page = hikesController.newHike(model);
 		verify(hikeService).getHikes();
 		verify(model).addAttribute(eq("hikeList"), anyObject());
@@ -57,15 +57,23 @@ public class TestHikesController {
 				eq("hike"),
 				eq(new Hike(Constants.DEFAULT_HIKE_TITLE,
 						Constants.DEFAULT_HIKE_DESCRIPTION)));
-		assertEquals(NEW_HIKE_PAGE, page);
+		assertEquals(ADMIN_HIKE_PAGE, page);
 	}
 
 	@Test
-	public void shouldCallHikeServiceAndRedirectToAddHikesPageWhenPostingNewHike() {
+	public void shouldCallHikeServiceAndRedirectToAdminHikesPageWhenPostingNewHike() {
 		Hike postedHike = new Hike("title", "description");
 		String page = hikesController.newHike(postedHike, bindingResult);
 		verify(hikeService).addHike(eq(postedHike));
-		assertEquals(NEW_HIKE_REDIRECT_PAGE, page);
+		assertEquals(ADMIN_HIKE_REDIRECT, page);
+	}
+	
+	@Test
+	public void shouldCallHikeServiceAndRedirectToAdminHikesPageWhenDeletingHike() {
+		Hike deletedHike = new Hike("title", "description");
+		String page = hikesController.removeHike(deletedHike, bindingResult);
+		verify(hikeService).removeHike(eq(deletedHike));
+		assertEquals(ADMIN_HIKE_REDIRECT, page);
 	}
 
 }

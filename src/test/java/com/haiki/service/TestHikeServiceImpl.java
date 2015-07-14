@@ -37,4 +37,11 @@ public class TestHikeServiceImpl {
 		verify(mongoService).save(hike);
 	}
 	
+	@Test
+	public void shouldCallRemoveHike() {
+		Hike hike = new Hike("title", "desc");
+		hikeService.removeHike(hike);
+		verify(mongoService).remove(hike);
+	}
+	
 }

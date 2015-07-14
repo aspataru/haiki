@@ -9,5 +9,7 @@ public interface MongoService {
 	void save(Hike hike);
 
 	List<Hike> getAllHikes();
+	
+	boolean remove(Hike hike);
 
 }

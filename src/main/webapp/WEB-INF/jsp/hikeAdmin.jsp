@@ -20,23 +20,41 @@
 	<form:form commandName="hike">
 		<table>
 			<tr>
+				<td colspan="2">New Hike</td>
+			</tr>
+			<tr>
 				<td>Hike title</td>
-				<td><form:input path="name" /></td>
+				<td><form:input path="title" /></td>
+			</tr>
+			<tr>
 				<td>Hike description</td>
-				<td><form:input path="description" /></td>
+				<td><form:textarea path="description" /></td>
 				<td><input type="submit" value="Submit"></td>
 			</tr>
 		</table>
-
 	</form:form>
+
+	<form:form method="DELETE" commandName="hike">
+		<table>
+			<tr>
+				<td colspan="2">Delete Hike</td>
+			</tr>
+			<tr>
+				<td>Hike title</td>
+				<td><form:input path="title" /></td>
+				<td><input type="submit" value="delete"></td>
+			</tr>
+		</table>
+	</form:form>
+
 	<h1>Haiki hikes</h1>
 	<table>
-	<c:forEach items="${hikeList.hikes}" var="element">
-		<tr>
-			<td>${element.name}</td>
-			<td>${element.description}</td>
-		</tr>
-	</c:forEach>
+		<c:forEach items="${hikeList.hikes}" var="element">
+			<tr>
+				<td>${element.title}</td>
+				<td>${element.description}</td>
+			</tr>
+		</c:forEach>
 	</table>
 </body>
 </html>

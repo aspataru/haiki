@@ -53,7 +53,7 @@
 					<div id="navbar" class="navbar-collapse collapse">
 						<ul class="nav navbar-nav">
 							<li class="active"><a href="#">Home</a></li>
-							<li><a href="${context}/hikes/new.html">New Hike</a></li>
+							<li><a href="${context}/hikes/admin.html">Manage hikes</a></li>
 <!-- 							<li><a href="#contact">Contact</a></li> -->
 <!-- 							<li class="dropdown"><a href="#" class="dropdown-toggle" -->
 <!-- 								data-toggle="dropdown" role="button" aria-haspopup="true" -->
@@ -92,7 +92,7 @@
 					alt="First slide">
 				<div class="container">
 					<div class="carousel-caption">
-						<h1>${hikeList.hikes[0].name}</h1>
+						<h1>${hikeList.hikes[0].title}</h1>
 						<p>${hikeList.hikes[0].description}</p>
 					</div>
 				</div>
@@ -103,7 +103,7 @@
 					alt="Second slide">
 				<div class="container">
 					<div class="carousel-caption">
-						<h1>${hikeList.hikes[1].name}</h1>
+						<h1>${hikeList.hikes[1].title}</h1>
 						<p>${hikeList.hikes[1].description}</p>
 					</div>
 				</div>
@@ -114,7 +114,7 @@
 					alt="Third slide">
 				<div class="container">
 					<div class="carousel-caption">
-						<h1>${hikeList.hikes[2].name}</h1>
+						<h1>${hikeList.hikes[2].title}</h1>
 						<p>${hikeList.hikes[2].description}</p>
 					</div>
 				</div>
@@ -146,7 +146,7 @@
 
 				<c:forEach items="${hikeList.hikes}" var="element">
 					<div class="blog-post">
-						<h2 class="blog-post-title">${element.name}</h2>
+						<h2 class="blog-post-title">${element.title}</h2>
 						<!--             <p class="blog-post-meta">December 23, 2013 by <a href="#">Jacob</a></p> -->
 						<p>${element.description}</p>
 						<hr class="featurette-divider">

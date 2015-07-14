@@ -42,6 +42,9 @@ public class MongoHello {
 		coll.insert(doc);
 		DBObject myDoc = coll.findOne();
 		System.out.println(myDoc);
-
+		System.out.println("deleting " + myDoc);
+		coll.remove(myDoc);
+		myDoc = coll.findOne();
+		System.out.println(myDoc);
 	}
 }

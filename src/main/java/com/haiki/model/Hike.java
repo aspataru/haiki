@@ -1,32 +1,21 @@
 package com.haiki.model;
 
+import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.ToString;
+import lombok.NonNull;
 
-@ToString
-@EqualsAndHashCode
+@Data
+@EqualsAndHashCode(of={"title"})
 public class Hike {
 	
-	private String name;
+	@NonNull
+	private String title;
+	@NonNull
 	private String description;
 	
-	public Hike(String name, String description) {
+	public Hike(String title, String description) {
 		super();
-		this.name = name;
+		this.title = title;
 		this.description = description;
 	}
-	
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
-	public String getDescription() {
-		return description;
-	}
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
 }

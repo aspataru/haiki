@@ -23,7 +23,9 @@ public class HikeServiceImpl implements HikeService {
 	public void addHike(Hike hike) {
 		mongoService.save(hike);
 	}
-	
-	
 
+	public boolean removeHike(Hike hike) {
+		return mongoService.remove(hike);
+	}
+	
 }
